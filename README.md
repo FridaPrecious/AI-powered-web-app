@@ -2,6 +2,29 @@
 
 AI-powered web application helping Kenyans living abroad manage tasks back home including money transfers, service hiring, and document verification.
 
+## Screenshots
+
+### Customer Portal - Submit Request
+![Customer Request Form](images/task-creation.png)
+
+*Customers describe their request in natural language*
+
+### Task Confirmation Messages
+![WhatsApp, Email, SMS Messages](images/messages.png)
+
+*Customers receive three message formats: WhatsApp, Email, and SMS style confirmations*
+
+### Employee Dashboard
+![Employee Dashboard](images/dashboard.png)
+
+*Internal team views all tasks with risk scores and status*
+
+### Full Task Details (Employee View)
+![Task Process Steps](images/task-steps.png)
+
+*Employees can view complete task details including process steps and extracted entities*
+
+
 ## Tech Stack
 
 - Backend: Node.js, Express
