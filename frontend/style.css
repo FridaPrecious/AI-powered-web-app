@@ -357,9 +357,43 @@ textarea:focus {
     color: #6c757d;
 }
 
+/* Risk Badge Styles */
+.risk-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 45px;
+}
+
+.risk-high {
+    background: #fde8e8;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.risk-medium {
+    background: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #ffe0b2;
+}
+
+.risk-low {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
 /* Panel borders for distinction */
 .panel-form, .panel-result {
     border-top: 3px solid #2196f3;
+}
+
+/* Ensure empty result can be hidden */
+#emptyResult {
+    display: block;
 }
 
 /* Responsive */
@@ -381,9 +415,4 @@ textarea:focus {
     .badge-subtitle {
         display: none;
     }
-}
-
-/* Ensure empty result can be hidden */
-#emptyResult {
-    display: block;
 }

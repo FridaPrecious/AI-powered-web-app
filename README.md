@@ -30,6 +30,11 @@ AI-powered-web-app/
 ├── database/
 │   ├── schema.sql
 │   └── full_dump.sql
+├── images/
+│   ├── dashboard.png
+│   ├── messages.png
+│   ├── task-steps.png
+│   └── task-creation.png
 ├── .gitignore
 └── README.md
 ```

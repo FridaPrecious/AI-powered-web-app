@@ -1,7 +1,7 @@
 function calculateRiskScore(intent, entities, isReturningCustomer = false, customerHistory = {}) {
     let risk = 20; // Base risk for all transactions
     
-    // ============ 1. AMOUNT RISK (For Money Transfers) ============
+    //  AMOUNT RISK (For Money Transfers) 
     if (intent === 'send_money' && entities.amount) {
         if (entities.amount > 500000) risk += 40;      // Very large transfer
         else if (entities.amount > 200000) risk += 35; // Large transfer
@@ -11,7 +11,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         // Amounts under 10,000 KES add no risk
     }
     
-    // ============ 2. URGENCY RISK ============
+    // URGENCY RISK 
     if (entities.urgency === 'high') {
         risk += 25;  // Urgent requests = higher fraud risk
     } else if (entities.urgency === 'medium') {
@@ -19,7 +19,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
     }
     // Low urgency adds no risk
     
-    // ============ 3. RECIPIENT VERIFICATION RISK (Diaspora Specific) ============
+    // RECIPIENT VERIFICATION RISK (Diaspora Specific) 
     if (intent === 'send_money') {
         if (!entities.recipient_verified) {
             risk += 35;  // Unverified recipient = high risk for diaspora sending home
@@ -32,7 +32,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         }
     }
     
-    // ============ 4. DOCUMENT VERIFICATION RISK (Kenya Specific) ============
+    // DOCUMENT VERIFICATION RISK (Kenya Specific) 
     if (intent === 'verify_document') {
         if (entities.document_type === 'land_title') {
             risk += 45;  // Land title fraud is very common in Kenya
@@ -57,7 +57,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         }
     }
     
-    // ============ 5. SERVICE HIRING RISK ============
+    //SERVICE HIRING RISK 
     if (intent === 'hire_service') {
         if (entities.service_type === 'lawyer') {
             risk += 15;  // Lawyers handling sensitive matters
@@ -77,7 +77,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         }
     }
     
-    // ============ 6. LOCATION RISK (Diaspora Specific) ============
+    // LOCATION RISK (Diaspora Specific)
     const highRiskLocations = [
         'border', 'remote', 'refugee_camp',
         'kakuma', 'dadaab', 'lodwar', 'garissa', 'mandera'
@@ -92,7 +92,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         risk += 10;
     }
     
-    // ============ 7. TIME-BASED RISK ============
+    // TIME-BASED RISK 
     const currentHour = new Date().getHours();
     const isLateNight = currentHour >= 22 || currentHour <= 5;
     if (isLateNight && entities.urgency === 'high') {
@@ -104,7 +104,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         risk += 10;  // Document verification on weekends = unusual
     }
     
-    // ============ 8. CUSTOMER HISTORY (Risk Reduction) ============
+    // CUSTOMER HISTORY (Risk Reduction) 
     if (isReturningCustomer) {
         risk -= 20;  // Returning customer discount
     }
@@ -127,7 +127,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         risk += 30;
     }
     
-    // ============ 9. COMBINATION RISKS (Synergy) ============
+    // COMBINATION RISKS (Synergy) 
     // High urgency + Large amount + Unverified recipient = Extremely high risk
     if (intent === 'send_money' && 
         entities.urgency === 'high' && 
@@ -144,7 +144,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         risk += 20;
     }
     
-    // ============ 10. POSITIVE FACTORS (Risk Reduction) ============
+    // POSITIVE FACTORS (Risk Reduction) 
     // Verified recipient reduces risk
     if (entities.recipient_verified === true) {
         risk -= 15;
@@ -165,7 +165,7 @@ function calculateRiskScore(intent, entities, isReturningCustomer = false, custo
         risk -= 15;
     }
     
-    // ============ FINAL: Cap at 0-100 ============
+    // FINAL: Cap at 0-100 
     return Math.min(100, Math.max(0, risk));
 }
 
