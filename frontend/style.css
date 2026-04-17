@@ -1,0 +1,352 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, #0f4c3a 0%, #1b5e3f 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    font-size: 28px;
+    font-weight: bold;
+    background: rgba(255,255,255,0.2);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.brand-text {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.nav-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Main Grid */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 24px;
+}
+
+/* Panels */
+.panel {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e9ecef;
+    background: #fafbfc;
+}
+
+.panel-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.panel-description {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.panel-form .panel-header,
+.panel-dashboard .panel-header {
+    padding: 20px 24px;
+}
+
+/* Form Styles */
+.form-group {
+    padding: 20px 24px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #1b5e3f;
+    box-shadow: 0 0 0 3px rgba(27, 94, 63, 0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #1b5e3f;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0f4c3a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(27, 94, 63, 0.3);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-full {
+    width: calc(100% - 48px);
+    margin: 0 24px 24px 24px;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    background: #f8f9fa;
+    margin: 0 24px 24px 24px;
+    border-radius: 8px;
+    color: #6c757d;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e9ecef;
+    border-top-color: #1b5e3f;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Result Panel */
+.result-panel {
+    margin: 0 24px 24px 24px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #1b5e3f;
+}
+
+.result-section {
+    margin-bottom: 20px;
+}
+
+.result-section h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.task-code {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1b5e3f;
+}
+
+.risk-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.risk-high {
+    background: #fde8e8;
+    color: #c62828;
+}
+
+.risk-medium {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.risk-low {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.steps-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.steps-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 14px;
+}
+
+.steps-list li:last-child {
+    border-bottom: none;
+}
+
+.message-box {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.message-whatsapp {
+    background: #dcf8c5;
+    border-left: 4px solid #25d366;
+}
+
+.message-email {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    white-space: pre-wrap;
+}
+
+.message-sms {
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    font-family: monospace;
+}
+
+/* Dashboard Table */
+.dashboard-content {
+    padding: 0 24px 24px 24px;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.task-table th {
+    text-align: left;
+    padding: 12px 8px;
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.task-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+.status-select {
+    padding: 6px 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+}
+
+.update-btn {
+    padding: 6px 12px;
+    background: #e9ecef;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.update-btn:hover {
+    background: #dee2e6;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}

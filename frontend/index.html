@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vunoh Global | Diaspora Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <span class="brand-icon">V</span>
+                <span class="brand-text">Vunoh Global</span>
+            </div>
+            <div class="nav-subtitle">Diaspora Assistant</div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Request Form Panel -->
+            <div class="panel panel-form">
+                <div class="panel-header">
+                    <h2>New Request</h2>
+                    <p class="panel-description">Describe what you need assistance with</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userInput">Request Description</label>
+                    <textarea id="userInput" rows="6" placeholder="Example: I need to send 75,000 KES to my mother in Nairobi. This is urgent."></textarea>
+                </div>
+                
+                <button id="submitBtn" class="btn btn-primary btn-full" onclick="createTask()">
+                    Submit Request
+                </button>
+                
+                <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Processing your request...</span>
+                </div>
+                
+                <div id="resultPanel" class="result-panel" style="display: none;"></div>
+            </div>
+
+            <!-- Dashboard Panel -->
+            <div class="panel panel-dashboard">
+                <div class="panel-header">
+                    <h2>Task Dashboard</h2>
+                    <p class="panel-description">Track and manage all requests</p>
+                </div>
+                
+                <div id="dashboardContent" class="dashboard-content">
+                    <div class="loading-state">Loading tasks...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
