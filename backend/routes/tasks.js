@@ -81,6 +81,58 @@ router.get('/tasks', async (req, res) => {
     }
 });
 
+// NEW ENDPOINT: Get full task details for employees (includes steps and messages)
+router.get('/tasks/full/:taskCode', async (req, res) => {
+    try {
+        const { taskCode } = req.params;
+        
+        // Get task basic info
+        const taskResult = await pool.query('SELECT * FROM tasks WHERE task_code = $1', [taskCode]);
+        
+        if (taskResult.rows.length === 0) {
+            return res.status(404).json({ error: 'Task not found' });
+        }
+        
+        const task = taskResult.rows[0];
+        
+        // Get steps for this task
+        const stepsResult = await pool.query(
+            'SELECT description FROM steps WHERE task_id = $1 ORDER BY step_order',
+            [task.id]
+        );
+        
+        // Get messages for this task
+        const messagesResult = await pool.query(
+            'SELECT type, content FROM messages WHERE task_id = $1',
+            [task.id]
+        );
+        
+        // Build messages object
+        const messages = {};
+        for (const msg of messagesResult.rows) {
+            messages[msg.type] = msg.content;
+        }
+        
+        // Return full task details
+        res.json({
+            task_code: task.task_code,
+            intent: task.intent,
+            status: task.status,
+            risk_score: task.risk_score,
+            employee_assignment: task.employee_assignment,
+            created_at: task.created_at,
+            updated_at: task.updated_at,
+            entities: task.entities,
+            steps: stepsResult.rows.map(s => s.description),
+            messages: messages
+        });
+        
+    } catch (error) {
+        console.error('Error fetching task details:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 router.patch('/tasks/:taskCode/status', async (req, res) => {
     try {
         const { taskCode } = req.params;

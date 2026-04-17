@@ -14,7 +14,7 @@ yarn-error.log*
 *.sqlite
 *.sqlite3
 
-# Database dumps (except the sample one you'll submit)
+# Database dumps 
 *.sql
 !database/schema.sql
 

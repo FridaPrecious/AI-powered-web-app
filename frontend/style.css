@@ -57,11 +57,61 @@ body {
     opacity: 0.9;
 }
 
-/* Main Grid */
+/* Section Badges - BOLD TITLES */
+.section-badge {
+    margin: 30px 0 20px 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.customer-badge {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    margin-top: 0;
+}
+
+.employee-badge {
+    background: #f3e5f5;
+    border-left: 4px solid #9c27b0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.badge-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.badge-title {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1a1a2e;
+}
+
+.badge-subtitle {
+    font-size: 13px;
+    font-weight: 400;
+    color: #6c757d;
+    margin-left: auto;
+}
+
+/* Main Grid - Customer Section */
 .main-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 24px;
+    margin-bottom: 20px;
 }
 
 /* Panels */
@@ -88,11 +138,6 @@ body {
 .panel-description {
     font-size: 14px;
     color: #6c757d;
-}
-
-.panel-form .panel-header,
-.panel-dashboard .panel-header {
-    padding: 20px 24px;
 }
 
 /* Form Styles */
@@ -147,15 +192,6 @@ textarea:focus {
     box-shadow: 0 4px 12px rgba(27, 94, 63, 0.3);
 }
 
-.btn-secondary {
-    background: #6c757d;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: #5a6268;
-}
-
 .btn-full {
     width: calc(100% - 48px);
     margin: 0 24px 24px 24px;
@@ -187,78 +223,41 @@ textarea:focus {
     to { transform: rotate(360deg); }
 }
 
-/* Result Panel */
+/* Customer Result Panel - ONLY MESSAGES */
+.panel-result {
+    border-top: 3px solid #2196f3;
+}
+
 .result-panel {
     margin: 0 24px 24px 24px;
     padding: 20px;
     background: #f8f9fa;
     border-radius: 8px;
-    border-left: 4px solid #1b5e3f;
 }
 
-.result-section {
-    margin-bottom: 20px;
+.empty-result {
+    padding: 60px 40px;
+    text-align: center;
+    color: #6c757d;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 24px 24px 24px;
 }
 
-.result-section h4 {
+/* Message boxes for customer */
+.message-box {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 16px;
     font-size: 14px;
-    font-weight: 600;
-    color: #495057;
+}
+
+.message-box strong {
+    display: block;
     margin-bottom: 8px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-}
-
-.task-code {
-    font-family: monospace;
-    font-size: 18px;
-    font-weight: bold;
-    color: #1b5e3f;
-}
-
-.risk-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.risk-high {
-    background: #fde8e8;
-    color: #c62828;
-}
-
-.risk-medium {
-    background: #fff3e0;
-    color: #f57c00;
-}
-
-.risk-low {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
-
-.steps-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.steps-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid #e9ecef;
-    font-size: 14px;
-}
-
-.steps-list li:last-child {
-    border-bottom: none;
-}
-
-.message-box {
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    font-size: 14px;
 }
 
 .message-whatsapp {
@@ -278,7 +277,12 @@ textarea:focus {
     font-family: monospace;
 }
 
-/* Dashboard Table */
+/* Employee Dashboard - FULL DETAILS */
+.panel-dashboard {
+    border-top: 3px solid #9c27b0;
+    margin-bottom: 30px;
+}
+
 .dashboard-content {
     padding: 0 24px 24px 24px;
 }
@@ -326,6 +330,21 @@ textarea:focus {
     background: #dee2e6;
 }
 
+.view-details-btn {
+    padding: 6px 12px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.view-details-btn:hover {
+    background: #1976d2;
+}
+
 .empty-state {
     text-align: center;
     padding: 40px;
@@ -336,6 +355,11 @@ textarea:focus {
     text-align: center;
     padding: 40px;
     color: #6c757d;
+}
+
+/* Panel borders for distinction */
+.panel-form, .panel-result {
+    border-top: 3px solid #2196f3;
 }
 
 /* Responsive */
@@ -349,4 +373,17 @@ textarea:focus {
         text-align: center;
         gap: 10px;
     }
+    
+    .employee-badge {
+        margin-top: 30px;
+    }
+    
+    .badge-subtitle {
+        display: none;
+    }
+}
+
+/* Ensure empty result can be hidden */
+#emptyResult {
+    display: block;
 }

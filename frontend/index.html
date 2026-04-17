@@ -17,12 +17,20 @@
             <div class="nav-subtitle">Diaspora Assistant</div>
         </nav>
 
-        <!-- Main Content -->
+        <!-- ============================================ -->
+        <!-- CUSTOMER SECTION - For Kenyans Living Abroad -->
+        <!-- ============================================ -->
+        <div class="section-badge customer-badge">
+            
+            <span class="badge-title"><strong>CUSTOMER PORTAL</strong></span>
+            <span class="badge-subtitle"><strong>(For Kenyans Living Abroad)</strong></span>
+        </div>
+        
         <div class="main-grid">
-            <!-- Request Form Panel -->
+            <!-- Request Form - Customer submits request -->
             <div class="panel panel-form">
                 <div class="panel-header">
-                    <h2>New Request</h2>
+                    <h2>Submit New Request</h2>
                     <p class="panel-description">Describe what you need assistance with</p>
                 </div>
                 
@@ -39,20 +47,37 @@
                     <div class="spinner"></div>
                     <span>Processing your request...</span>
                 </div>
-                
-                <div id="resultPanel" class="result-panel" style="display: none;"></div>
             </div>
 
-            <!-- Dashboard Panel -->
-            <div class="panel panel-dashboard">
+            <!-- Customer Result - ONLY shows messages to customer -->
+            <div class="panel panel-result">
                 <div class="panel-header">
-                    <h2>Task Dashboard</h2>
-                    <p class="panel-description">Track and manage all requests</p>
+                    <h2>Your Task Confirmation</h2>
+                    <p class="panel-description">Messages sent to you via WhatsApp, Email, and SMS</p>
                 </div>
-                
-                <div id="dashboardContent" class="dashboard-content">
-                    <div class="loading-state">Loading tasks...</div>
+                <div id="resultPanel" class="result-panel" style="display: none;"></div>
+                <div id="emptyResult" class="empty-result">
+                    <p>Submit a request above to see your confirmation messages</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- EMPLOYEE SECTION - Internal Team Only -->
+        <!-- ============================================ -->
+        <div class="section-badge employee-badge">
+            
+            <span class="badge-title"><strong>EMPLOYEE DASHBOARD</strong> </span>
+            <span class="badge-subtitle"><strong>(Internal Team Only)</strong></span>
+        </div>
+        
+        <div class="panel panel-dashboard">
+            <div class="panel-header">
+                <h2>Task Management Dashboard</h2>
+                <p class="panel-description">View and manage all customer requests with full details</p>
+            </div>
+            <div id="dashboardContent" class="dashboard-content">
+                <div class="loading-state">Loading tasks...</div>
             </div>
         </div>
     </div>
