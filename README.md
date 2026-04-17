@@ -133,7 +133,7 @@ The system calculates a risk score from 0-100 based on:
 
 Risk score is capped between 0-100 and color-coded in the dashboard:
 - Green (0-30): Low risk
-- Yellow (31-60): Medium risk
+- Orange (31-60): Medium risk
 - Red (61-100): High risk
 
 ## Message Formats
